@@ -2,7 +2,6 @@
 package sparadrap.ui;
 
 import sparadrap.Clients;
-import sparadrap.Mutuelle;
 import sparadrap.Pharmacie;
 
 
@@ -13,7 +12,7 @@ import java.util.List;
 
 
 public class ClientsPanel extends JPanel {
-    private Pharmacie service; private JTable table;
+    private final Pharmacie service; private final JTable table;
     public ClientsPanel(Pharmacie s){ this.service=s;
         setLayout(new BorderLayout());
         add(new JLabel("Liste des clients"), BorderLayout.NORTH);

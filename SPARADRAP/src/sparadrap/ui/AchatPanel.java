@@ -14,12 +14,12 @@ import java.awt.*;
 
 public class AchatPanel extends JPanel {
     private final Pharmacie service;
-    private JComboBox<Clients> cbClient;
-    private JComboBox<Medecins> cbMedecin;
-    private JCheckBox cbAvecMutuelle;
-    private JComboBox<Mutuelle> cbMutuelle;
-    private JComboBox<Medicaments> cbMedicament;
-    private JSpinner spQty;
+    private final JComboBox<Clients> cbClient;
+    private final JComboBox<Medecins> cbMedecin;
+    private final JCheckBox cbAvecMutuelle;
+    private final JComboBox<Mutuelle> cbMutuelle;
+    private final JComboBox<Medicaments> cbMedicament;
+    private final JSpinner spQty;
 
     public AchatPanel(Pharmacie s){
         this.service = s;

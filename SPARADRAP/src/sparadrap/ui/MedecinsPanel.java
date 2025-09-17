@@ -11,8 +11,8 @@ import java.awt.*;
 import java.util.List;
 
 public class MedecinsPanel extends JPanel {
-    private Pharmacie service;
-    private JTable table;
+    private final Pharmacie service;
+    private final JTable table;
     public MedecinsPanel(Pharmacie s){ this.service=s;
         setLayout(new BorderLayout());
         add(new JLabel("Liste des médecins"), BorderLayout.NORTH);

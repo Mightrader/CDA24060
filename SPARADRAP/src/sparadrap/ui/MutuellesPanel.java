@@ -11,7 +11,7 @@ import java.awt.*;
 import java.util.List;
 
 public class MutuellesPanel extends JPanel {
-    private Pharmacie service; private JTable table;
+    private final Pharmacie service; private final JTable table;
     public MutuellesPanel(Pharmacie s){ this.service=s; setLayout(new BorderLayout());
         add(new JLabel("Liste des mutuelles"), BorderLayout.NORTH);
         table = new JTable(); add(new JScrollPane(table), BorderLayout.CENTER);

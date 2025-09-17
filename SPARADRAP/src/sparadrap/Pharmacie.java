@@ -7,11 +7,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Pharmacie {
-    private List<Medecins> medecins = new ArrayList<>();
-    private List<Clients> clients = new ArrayList<>();
-    private List<Medicaments> medicaments = new ArrayList<>();
-    private List<Mutuelle> mutuelles = new ArrayList<>();
-    private List<Achat> achats = new ArrayList<>();
+    private final List<Medecins> medecins = new ArrayList<>();
+    private final List<Clients> clients = new ArrayList<>();
+    private final List<Medicaments> medicaments = new ArrayList<>();
+    private final List<Mutuelle> mutuelles = new ArrayList<>();
+    private final ThreadLocal<List<Achat>> achats = ThreadLocal.withInitial(ArrayList::new);
 
     public Pharmacie(){ seed(); }
 
@@ -25,11 +25,11 @@ public class Pharmacie {
         Medecins d2 = new Medecins(2,"Durand","Paul","0102030406","Lyon");
         medecins.add(d1); medecins.add(d2);
 
-        Clients c1 = new Clients(1,"Dupont","Jean","12 rue des Fleurs","0600000000","Rennes");
-        c1.setMutuelle(mA); c1.setMedecinReferent(d1);
-        Clients c2 = new Clients(2,"Petit","Lucie","5 av de Paris","0611111111","Bordeaux");
-        c2.setMutuelle(mB); c2.setMedecinReferent(d2);
-        Clients c3 = new Clients(3,"Moreau","Lea","rue sans nom","0622222222","Lyon"); // pas de mutuelle volontairement
+        Clients c1 = new Clients(1,"Dupont","Jean", "0600000000","Rennes");
+        c1.setMutuelle(mA); c1.setMedecinReferent();
+        Clients c2 = new Clients(2,"Petit","Lucie", "0611111111","Bordeaux");
+        c2.setMutuelle(mB); c2.setMedecinReferent();
+        Clients c3 = new Clients(3,"Moreau","Lea", "0622222222","Lyon"); // pas de mutuelle volontairement
         clients.add(c1); clients.add(c2); clients.add(c3);
 
         medicaments.add(new Medicaments("Doliprane","Analgésique",2.3,120));
@@ -45,10 +45,8 @@ public class Pharmacie {
     }
     public List<Mutuelle> getMutuelles(){ return Collections.unmodifiableList(mutuelles);
     }
-    public List<Achat> getAchats(){ return Collections.unmodifiableList(achats);
-    }
 
-    public Achat acheter(Clients client, Medecins medecin, Mutuelle mutuelle, Medicaments medicament, int quantite){
+    public sparadrap.Achat acheter(Clients client, Medecins medecin, Mutuelle mutuelle, Medicaments medicament, int quantite){
         // Règles de validation de base (quantités, prix, disponibilité)
         if (medicament == null || quantite <= 0) return null;
         if (medicament.getQuantite() < quantite) {
@@ -75,8 +73,8 @@ public class Pharmacie {
         // Décrémente le stock après avoir validé et calcué
         medicament.setQuantite(medicament.getQuantite() - quantite);
         // Construit et enregistre l'achat
-        Achat a = new Achat(client, medecin, mutuelle, medicament, quantite, total);
-        achats.add(a);
+        sparadrap.Achat a = new sparadrap.Achat(client, medecin, mutuelle, medicament, quantite, total);
+        achats.get().add(a);
         return a;
     }
 }
