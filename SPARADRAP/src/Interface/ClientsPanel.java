@@ -1,9 +1,16 @@
- 
+
+package sparadrap.ui;
+
+import sparadrap.Clients;
+import sparadrap.Mutuelle;
+import sparadrap.Pharmacie;
+
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
+
 
 public class ClientsPanel extends JPanel {
     private Pharmacie service; private JTable table;
@@ -12,6 +19,7 @@ public class ClientsPanel extends JPanel {
         add(new JLabel("Liste des clients"), BorderLayout.NORTH);
         table = new JTable(); add(new JScrollPane(table), BorderLayout.CENTER);
         JButton refresh = new JButton("Rafraîchir");
+        // Recharge les données depuis la couche métier
         refresh.addActionListener(e->load());
         add(refresh, BorderLayout.SOUTH);
         load();

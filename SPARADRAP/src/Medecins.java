@@ -1,3 +1,5 @@
+package sparadrap;
+
 public class Medecins {
     private int id;
     private String nom;

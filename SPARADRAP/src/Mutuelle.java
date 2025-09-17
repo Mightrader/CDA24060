@@ -1,3 +1,5 @@
+package sparadrap;
+
 public class Mutuelle {
     private String nom;
     private double tauxPriseEnCharge;

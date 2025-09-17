@@ -1,3 +1,5 @@
+package sparadrap;
+
 public class Medicaments {
     private String nom;
     private String categorie;

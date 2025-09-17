@@ -1,3 +1,5 @@
+package sparadrap;
+
 public class Clients {
     private int id;
     private String nom;

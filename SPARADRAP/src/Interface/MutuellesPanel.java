@@ -1,4 +1,9 @@
  
+package sparadrap.ui;
+
+import sparadrap.Mutuelle;
+import sparadrap.Pharmacie;
+
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -10,7 +15,10 @@ public class MutuellesPanel extends JPanel {
     public MutuellesPanel(Pharmacie s){ this.service=s; setLayout(new BorderLayout());
         add(new JLabel("Liste des mutuelles"), BorderLayout.NORTH);
         table = new JTable(); add(new JScrollPane(table), BorderLayout.CENTER);
-        JButton refresh = new JButton("Rafraîchir"); refresh.addActionListener(e->load()); add(refresh, BorderLayout.SOUTH);
+        JButton refresh = new JButton("Rafraîchir");
+        // Recharge les données depuis la couche métier
+        refresh.addActionListener(e->load());
+        add(refresh, BorderLayout.SOUTH);
         load();
     }
     private void load(){ List<Mutuelle> l = service.getMutuelles();

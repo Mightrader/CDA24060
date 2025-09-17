@@ -1,3 +1,11 @@
+package sparadrap;
+
+import sparadrap.ui.AchatPanel;
+import sparadrap.ui.MedecinsPanel;
+import sparadrap.ui.ClientsPanel;
+import sparadrap.ui.MedicamentsPanel;
+import sparadrap.ui.MutuellesPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,6 +32,7 @@ public class Main {
             top.add(bMut);
             frame.add(top, BorderLayout.NORTH);
 
+            // Zone centrale où l'on injecte dynamiquement le panel actif
             JPanel center = new JPanel(new BorderLayout());
             frame.add(center, BorderLayout.CENTER);
 
@@ -34,6 +43,7 @@ public class Main {
             MutuellesPanel mutPanel = new MutuellesPanel(service);
             center.add(achatsPanel, BorderLayout.CENTER);
 
+            // Navigation par remplacement du contenu central
             bAchat.addActionListener(e -> switchCenter(center, achatsPanel));
             bMed.addActionListener(e -> switchCenter(center, medPanel));
             bCli.addActionListener(e -> switchCenter(center, cliPanel));
@@ -45,6 +55,7 @@ public class Main {
     }
 
     private static void switchCenter(JPanel center, JPanel panel) {
+        // Remplace le panel affiché et force le recalcul/redessin
         center.removeAll();
         center.add(panel, BorderLayout.CENTER);
         center.revalidate();

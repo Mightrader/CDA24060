@@ -1,4 +1,13 @@
- 
+
+package sparadrap.ui;
+
+import sparadrap.Achat;
+import sparadrap.Clients;
+import sparadrap.Medecins;
+import sparadrap.Medicaments;
+import sparadrap.Mutuelle;
+import sparadrap.Pharmacie;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +36,9 @@ public class AchatPanel extends JPanel {
         cbAvecMutuelle = new JCheckBox("Avec mutuelle");
         cbMutuelle = new JComboBox<>(service.getMutuelles().toArray(new Mutuelle[0]));
         cbMutuelle.setEnabled(false);
+        // Activer/désactiver la sélection de mutuelle selon la case à cocher
         cbAvecMutuelle.addActionListener(e -> cbMutuelle.setEnabled(cbAvecMutuelle.isSelected()));
+        // Ajuste automatiquement la mutuelle selon le client sélectionné
         cbClient.addActionListener(e -> onClientChange());
         cbMedicament = new JComboBox<>(service.getMedicaments().toArray(new Medicaments[0]));
         spQty = new JSpinner(new SpinnerNumberModel(1, 1, 50, 1));
@@ -62,6 +73,7 @@ public class AchatPanel extends JPanel {
         add(form, BorderLayout.CENTER);
 
         JButton valider = new JButton("Valider achat");
+        // Valide l'achat pour appliqué les règles métier (stock, mutuelle)
         valider.addActionListener(e -> onValider());
         JPanel south = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         south.add(valider);
@@ -75,6 +87,7 @@ public class AchatPanel extends JPanel {
         Medicaments medicaments = (Medicaments) cbMedicament.getSelectedItem();
         int qty = (Integer) spQty.getValue();
 
+        // Pour le calcul etvalidation de l'achat
         Achat achat = service.acheter(client, medecins, mutuelle, medicaments, qty);
         if (achat == null){
             JOptionPane.showMessageDialog(this, "Achat impossible (stock insuffisant ?)", "Erreur", JOptionPane.WARNING_MESSAGE);
@@ -87,6 +100,7 @@ public class AchatPanel extends JPanel {
         Clients client = (Clients) cbClient.getSelectedItem();
         Mutuelle m = client != null ? client.getMutuelle() : null;
         if (m != null){
+            // Si le client a une mutuelle, on la sélectionne et on verrouille le choix
             cbAvecMutuelle.setSelected(true);
             cbMutuelle.setEnabled(false);
             cbMutuelle.setSelectedItem(m);
