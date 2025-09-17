@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch (Exception ignored) {}
         SwingUtilities.invokeLater(() -> {
-            Pharmacie service = new Pharmacie();
+            sparadrap.Pharmacie service = new sparadrap.Pharmacie();
             JFrame frame = new JFrame("SPARADRAP");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(980, 600);
@@ -32,7 +32,7 @@ public class Main {
             top.add(bMut);
             frame.add(top, BorderLayout.NORTH);
 
-            // Zone centrale où l'on injecte dynamiquement le panel actif
+            // Zone centre
             JPanel center = new JPanel(new BorderLayout());
             frame.add(center, BorderLayout.CENTER);
 
@@ -43,7 +43,7 @@ public class Main {
             MutuellesPanel mutPanel = new MutuellesPanel(service);
             center.add(achatsPanel, BorderLayout.CENTER);
 
-            // Navigation par remplacement du contenu central
+            // Navigation
             bAchat.addActionListener(e -> switchCenter(center, achatsPanel));
             bMed.addActionListener(e -> switchCenter(center, medPanel));
             bCli.addActionListener(e -> switchCenter(center, cliPanel));
@@ -55,7 +55,7 @@ public class Main {
     }
 
     private static void switchCenter(JPanel center, JPanel panel) {
-        // Remplace le panel affiché et force le recalcul/redessin
+        // Remplace le panneau affiché pour recalculer
         center.removeAll();
         center.add(panel, BorderLayout.CENTER);
         center.revalidate();

@@ -36,9 +36,9 @@ public class AchatPanel extends JPanel {
         cbAvecMutuelle = new JCheckBox("Avec mutuelle");
         cbMutuelle = new JComboBox<>(service.getMutuelles().toArray(new Mutuelle[0]));
         cbMutuelle.setEnabled(false);
-        // Activer/désactiver la sélection de mutuelle selon la case à cocher
+        // Activer ou désactiver la sélection de mutuelle
         cbAvecMutuelle.addActionListener(e -> cbMutuelle.setEnabled(cbAvecMutuelle.isSelected()));
-        // Ajuste automatiquement la mutuelle selon le client sélectionné
+        // Ajuste automatiquement la mutuelle selon client sélectionné
         cbClient.addActionListener(e -> onClientChange());
         cbMedicament = new JComboBox<>(service.getMedicaments().toArray(new Medicaments[0]));
         spQty = new JSpinner(new SpinnerNumberModel(1, 1, 50, 1));
@@ -73,7 +73,7 @@ public class AchatPanel extends JPanel {
         add(form, BorderLayout.CENTER);
 
         JButton valider = new JButton("Valider achat");
-        // Valide l'achat pour appliqué les règles métier (stock, mutuelle)
+        // Valider achat pour appliqur les règles métier
         valider.addActionListener(e -> onValider());
         JPanel south = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         south.add(valider);

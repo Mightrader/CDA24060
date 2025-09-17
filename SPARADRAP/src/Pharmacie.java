@@ -16,7 +16,7 @@ public class Pharmacie {
     public Pharmacie(){ seed(); }
 
     private void seed(){
-        // Initialise un jeu de données minimal pour la démo (médecins, clients, mutuelles, médicaments)
+        // Test démo (médecins, clients, mutuelles, médicaments)
         Mutuelle mA = new Mutuelle("Axa Sante", "0800123456", "contact@axa.fr", "Paris", 0.7);
         Mutuelle mB = new Mutuelle("MMA Sante", "0800654321", "info@mma.fr", "Rennes", 0.6);
         mutuelles.add(mA); mutuelles.add(mB);
@@ -55,7 +55,7 @@ public class Pharmacie {
             return null;
         }
         if (medicament.getPrix() < 0) return null;
-        // Cohérence mutuelle: si le client a une mutuelle, elle doit correspondre à celle fournie
+        // si le client a une mutuelle, elle doit correspondre à celle fournie
         if (client != null) {
             Mutuelle mutuelleClient = client.getMutuelle();
             if (mutuelleClient != null && mutuelle != null && mutuelleClient != mutuelle) {
@@ -65,16 +65,16 @@ public class Pharmacie {
                 return null; // client sans mutuelle mais mutuelle fournie
             }
         }
-        // Calcul du total avec éventuelle prise en charge de la mutuelle
+        // Calcul du total avec éventuelle prise en charge de mutuelle
         BigDecimal total = BigDecimal.valueOf(medicament.getPrix()).multiply(BigDecimal.valueOf(quantite));
         if (mutuelle != null) {
             BigDecimal taux = BigDecimal.valueOf(1.0 - mutuelle.getTauxPriseEnCharge());
             total = total.multiply(taux);
         }
         total = total.setScale(2, RoundingMode.HALF_UP);
-        // Décrémente le stock après validation et calcul
+        // Décrémente le stock après avoir validé et calcué
         medicament.setQuantite(medicament.getQuantite() - quantite);
-        // Construit et sauvegarde l'achat
+        // Construit et enregistre l'achat
         Achat a = new Achat(client, medecin, mutuelle, medicament, quantite, total);
         achats.add(a);
         return a;

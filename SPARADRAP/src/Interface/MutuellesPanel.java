@@ -16,7 +16,7 @@ public class MutuellesPanel extends JPanel {
         add(new JLabel("Liste des mutuelles"), BorderLayout.NORTH);
         table = new JTable(); add(new JScrollPane(table), BorderLayout.CENTER);
         JButton refresh = new JButton("Rafraîchir");
-        // Recharge les données depuis la couche métier
+        // Recharge les données a partr de la couche métier
         refresh.addActionListener(e->load());
         add(refresh, BorderLayout.SOUTH);
         load();
