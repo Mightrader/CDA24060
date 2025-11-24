@@ -1,0 +1,166 @@
+package sparadrap.model;
+
+import java.util.Objects;
+import sparadrap.util.regex.Regex;
+
+public class Personne {
+
+    private int id;
+    private String nom;
+    private String prenom;
+    private String adresse;
+    private String codePostal;
+    private String ville;
+    private String telephone;
+    private String email;
+
+    public Personne() {
+    }
+
+    public Personne(int id, String nom, String prenom) {
+        this.id = id;
+        setNom(nom);
+        setPrenom(prenom);
+    }
+
+    public Personne(int id,
+                    String nom,
+                    String prenom,
+                    String adresse,
+                    String codePostal,
+                    String ville,
+                    String telephone,
+                    String email) {
+        this.id = id;
+        setNom(nom);
+        setPrenom(prenom);
+        setAdresse(adresse);
+        setCodePostal(codePostal);
+        setVille(ville);
+        setTelephone(telephone);
+        setEmail(email);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        if (id < 0) {
+            throw new IllegalArgumentException("L'identifiant doit être positif");
+        }
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        if (nom == null || nom.isBlank()) {
+            throw new IllegalArgumentException("Le nom est obligatoire");
+        }
+        this.nom = nom.trim();
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        if (prenom == null || prenom.isBlank()) {
+            throw new IllegalArgumentException("Le prénom est obligatoire");
+        }
+        this.prenom = prenom.trim();
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse == null ? null : adresse.trim();
+    }
+
+    public String getCodePostal() {
+        return codePostal;
+    }
+
+    public void setCodePostal(String codePostal) {
+        if (codePostal != null && !codePostal.isBlank()) {
+            String value = codePostal.trim();
+            if (!Regex.isValid(value, Regex.CODE_POSTAL)) {
+                throw new IllegalArgumentException("Code postal invalide: " + value);
+            }
+            this.codePostal = value;
+        } else {
+            this.codePostal = null;
+        }
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville == null ? null : ville.trim();
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        if (telephone != null && !telephone.isBlank()) {
+            String value = telephone.trim();
+            if (!Regex.isValid(value, Regex.TELEPHONE)) {
+                throw new IllegalArgumentException("Téléphone invalide: " + value);
+            }
+            this.telephone = value;
+        } else {
+            this.telephone = null;
+        }
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        if (email != null && !email.isBlank()) {
+            String value = email.trim();
+            if (!Regex.isValid(value, Regex.EMAIL)) {
+                throw new IllegalArgumentException("Email invalide: " + value);
+            }
+            this.email = value;
+        } else {
+            this.email = null;
+        }
+    }
+
+    public String getNomComplet() {
+        String n = nom == null ? "" : nom;
+        String p = prenom == null ? "" : prenom;
+        return (n + " " + p).trim();
+    }
+
+    @Override
+    public String toString() {
+        return getNomComplet();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Personne)) return false;
+        Personne personne = (Personne) o;
+        return id == personne.id &&
+                Objects.equals(nom, personne.nom) &&
+                Objects.equals(prenom, personne.prenom);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nom, prenom);
+    }
+}

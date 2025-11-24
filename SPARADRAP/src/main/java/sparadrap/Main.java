@@ -111,8 +111,7 @@ public class Main {
             frame.add(cards, BorderLayout.CENTER);
 
             JPanel homePanel = new JPanel(new BorderLayout());
-            JLabel homeLabel = new JLabel("<html><h2 style='margin:8px'>Bienvenue dans SPARADRAP</h2>" +
-                    "<p style='margin:8px'>Choisissez une section dans la barre de navigation ci-dessus.</p></html>",
+            JLabel homeLabel = new JLabel("<html><h2 style='margin:8px'>Bienvenue dans SPARADRAP</h2>",
                     SwingConstants.CENTER);
             homePanel.add(homeLabel, BorderLayout.CENTER);
 

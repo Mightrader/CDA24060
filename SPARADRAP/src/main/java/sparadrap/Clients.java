@@ -1,42 +1,32 @@
 package sparadrap;
 
-public class Clients {
-    private final int id;
-    private final String nom;
-    private final String prenom;
-    private final String telephone;
-    private final String ville;
-    private sparadrap.Mutuelle mutuelle;
+import sparadrap.model.Client;
+
+public class Clients extends Client {
+
+    public Clients() {
+        super();
+    }
 
     public Clients(int id, String nom, String prenom, String telephone, String ville) {
-        this.id=id;
-        this.nom=nom;
-        this.prenom=prenom;
-        this.telephone=telephone;
-        this.ville=ville; }
-
-    public int getId(){ return id;
+        super(id, nom, prenom);
+        setTelephone(telephone);
+        setVille(ville);
     }
 
-    public String getNom(){ return nom;
+    public Clients(int id,
+                   String nom,
+                   String prenom,
+                   String adresse,
+                   String codePostal,
+                   String ville,
+                   String telephone,
+                   String email,
+                   String numeroSecuriteSociale,
+                   Mutuelle mutuelle) {
+        super(id, nom, prenom, adresse, codePostal, ville, telephone, email, numeroSecuriteSociale, mutuelle);
     }
 
-    public String getPrenom(){ return prenom;
+    public void setMedecinReferent() {
     }
-
-    public String getTelephone(){ return telephone;
-    }
-
-    public String getVille(){ return ville;
-    }
-
-    public sparadrap.Mutuelle getMutuelle(){ return mutuelle;
-    } public void setMutuelle(sparadrap.Mutuelle m){ this.mutuelle=m;
-    }
-
-    public void setMedecinReferent(){
-    }
-    @Override public String toString(){return (nom==null?"Client":nom) + " " + (prenom==null?"":prenom);
-    }
-
 }

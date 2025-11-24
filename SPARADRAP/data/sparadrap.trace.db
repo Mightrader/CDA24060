@@ -33,3 +33,28 @@ CREATE TABLE IF NOT EXISTS clients(id IDENTITY PRIMARY KEY, nom VARCHAR(100) UNI
 	at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
 	at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+2025-11-21 10:43:56.269077+01:00 database: opening C:/Users/DEV01/Desktop/CDA24060/CDA AFPA/SPARADRAP/data/sparadrap
+org.h2.message.DbException: Une erreur est survenue lors de l'ouverture de la base de données: "Lock file recently modified"
+Error opening database: "Lock file recently modified" [8000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.store.FileLock.getExceptionFatal(FileLock.java:429)
+	at org.h2.store.FileLock.waitUntilOld(FileLock.java:301)
+	at org.h2.store.FileLock.lockFile(FileLock.java:318)
+	at org.h2.store.FileLock.lock(FileLock.java:110)
+	at org.h2.engine.Database.<init>(Database.java:317)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at sparadrap.db.Database.getConnection(Database.java:25)
+	at sparadrap.db.Database.init(Database.java:17)
+	at sparadrap.Main.main(Main.java:30)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Une erreur est survenue lors de l'ouverture de la base de données: "Lock file recently modified"
+Error opening database: "Lock file recently modified" [8000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:516)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 17 more
