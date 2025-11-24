@@ -178,3 +178,53 @@ nov. 21, 2025 10:50:48 AM sparadrap.Main lambda$main$7
 INFOS: Fenêtre initialisée et visible.
 nov. 21, 2025 11:07:59 AM sparadrap.Main$1 windowClosing
 INFOS: Fermeture de l'application.
+nov. 24, 2025 9:18:26 AM sparadrap.Main main
+INFOS: ===== Démarrage de SPARADRAP =====
+nov. 24, 2025 9:18:30 AM sparadrap.Main main
+INFOS: Insertion d'un achat de test OK.
+nov. 24, 2025 9:18:32 AM sparadrap.Main lambda$main$7
+INFOS: Fenêtre initialisée et visible.
+nov. 24, 2025 9:18:55 AM sparadrap.Main lambda$main$2
+INFOS: Onglet affiché : Achats
+nov. 24, 2025 9:18:59 AM sparadrap.Main lambda$main$3
+INFOS: Onglet affiché : Médecins
+nov. 24, 2025 9:19:00 AM sparadrap.Main lambda$main$4
+INFOS: Onglet affiché : Clients
+nov. 24, 2025 9:19:02 AM sparadrap.Main lambda$main$5
+INFOS: Onglet affiché : Médicaments
+nov. 24, 2025 9:19:03 AM sparadrap.Main lambda$main$4
+INFOS: Onglet affiché : Clients
+nov. 24, 2025 9:20:38 AM sparadrap.Main lambda$main$5
+INFOS: Onglet affiché : Médicaments
+nov. 24, 2025 9:20:42 AM sparadrap.Main lambda$main$6
+INFOS: Onglet affiché : Mutuelles
+nov. 24, 2025 11:07:45 AM sparadrap.Main main
+INFOS: ===== Démarrage de SPARADRAP =====
+nov. 24, 2025 11:07:49 AM sparadrap.Main main
+INFOS: Insertion d'un achat de test OK.
+nov. 24, 2025 11:07:50 AM sparadrap.Main lambda$main$7
+INFOS: Fenêtre initialisée et visible.
+nov. 24, 2025 11:07:55 AM sparadrap.Main lambda$main$3
+INFOS: Onglet affiché : Médecins
+nov. 24, 2025 11:07:58 AM sparadrap.Main lambda$main$4
+INFOS: Onglet affiché : Clients
+nov. 24, 2025 11:08:07 AM sparadrap.Main$1 windowClosing
+INFOS: Fermeture de l'application.
+nov. 24, 2025 11:53:09 AM sparadrap.Main main
+INFOS: ===== Démarrage de SPARADRAP =====
+nov. 24, 2025 11:53:14 AM sparadrap.Main main
+INFOS: Insertion d'un achat de test OK.
+nov. 24, 2025 11:53:15 AM sparadrap.Main lambda$main$7
+INFOS: Fenêtre initialisée et visible.
+nov. 24, 2025 11:53:21 AM sparadrap.Main$1 windowClosing
+INFOS: Fermeture de l'application.
+nov. 24, 2025 2:19:28 PM sparadrap.Main main
+INFOS: ===== Démarrage de SPARADRAP =====
+nov. 24, 2025 2:19:33 PM sparadrap.Main main
+INFOS: Insertion d'un achat de test OK.
+nov. 24, 2025 2:19:34 PM sparadrap.Main lambda$main$7
+INFOS: Fenêtre initialisée et visible.
+nov. 24, 2025 2:19:42 PM sparadrap.Main lambda$main$3
+INFOS: Onglet affiché : Médecins
+nov. 24, 2025 2:19:49 PM sparadrap.Main$1 windowClosing
+INFOS: Fermeture de l'application.
