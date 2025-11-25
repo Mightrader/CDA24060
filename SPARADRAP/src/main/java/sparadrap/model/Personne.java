@@ -1,6 +1,7 @@
 package sparadrap.model;
 
 import java.util.Objects;
+import sparadrap.exception.ValidationException;
 import sparadrap.util.regex.Regex;
 
 public class Personne {
@@ -47,7 +48,7 @@ public class Personne {
 
     public void setId(int id) {
         if (id < 0) {
-            throw new IllegalArgumentException("L'identifiant doit être positif");
+            throw new ValidationException("L'identifiant doit être positif");
         }
         this.id = id;
     }
@@ -58,7 +59,7 @@ public class Personne {
 
     public void setNom(String nom) {
         if (nom == null || nom.isBlank()) {
-            throw new IllegalArgumentException("Le nom est obligatoire");
+            throw new ValidationException("Le nom est obligatoire");
         }
         this.nom = nom.trim();
     }
@@ -69,7 +70,7 @@ public class Personne {
 
     public void setPrenom(String prenom) {
         if (prenom == null || prenom.isBlank()) {
-            throw new IllegalArgumentException("Le prénom est obligatoire");
+            throw new ValidationException("Le prénom est obligatoire");
         }
         this.prenom = prenom.trim();
     }
@@ -90,7 +91,7 @@ public class Personne {
         if (codePostal != null && !codePostal.isBlank()) {
             String value = codePostal.trim();
             if (!Regex.isValid(value, Regex.CODE_POSTAL)) {
-                throw new IllegalArgumentException("Code postal invalide: " + value);
+                throw new ValidationException("Code postal invalide: " + value);
             }
             this.codePostal = value;
         } else {
@@ -114,7 +115,7 @@ public class Personne {
         if (telephone != null && !telephone.isBlank()) {
             String value = telephone.trim();
             if (!Regex.isValid(value, Regex.TELEPHONE)) {
-                throw new IllegalArgumentException("Téléphone invalide: " + value);
+                throw new ValidationException("Téléphone invalide: " + value);
             }
             this.telephone = value;
         } else {
@@ -130,7 +131,7 @@ public class Personne {
         if (email != null && !email.isBlank()) {
             String value = email.trim();
             if (!Regex.isValid(value, Regex.EMAIL)) {
-                throw new IllegalArgumentException("Email invalide: " + value);
+                throw new ValidationException("Email invalide: " + value);
             }
             this.email = value;
         } else {
