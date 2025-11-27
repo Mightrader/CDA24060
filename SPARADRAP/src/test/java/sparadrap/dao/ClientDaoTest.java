@@ -6,6 +6,9 @@ import sparadrap.Clients;
 import sparadrap.db.AchatRepository;
 import sparadrap.db.Database;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,10 +19,20 @@ class ClientDaoTest {
 
     @BeforeAll
     static void initDatabase() {
-        // Même initialisation que dans Main
+        // Initialisation de la base
         Database.init();
         AchatRepository repo = new AchatRepository();
         repo.createSchema();
+
+        // Nettoyage la table clients
+        try (Connection c = Database.getConnection();
+             Statement st = c.createStatement()) {
+            st.executeUpdate("DELETE FROM clients");
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors du nettoyage de la table clients", e);
+        }
+
+        // On remet les données de base
         repo.seed();
 
         dao = new ClientDao();

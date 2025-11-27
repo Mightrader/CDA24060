@@ -4,6 +4,12 @@ import java.util.Objects;
 import sparadrap.exception.ValidationException;
 import sparadrap.util.regex.Regex;
 
+/**
+ * Représente une personne de base dans la pharmacie.
+ * <p>
+ * Cette classe porte les informations communes aux clients, médecins, etc.
+ * Elle vérifie les valeurs reçues dans les setters (codage défensif).
+ */
 public class Personne {
 
     private int id;
@@ -15,15 +21,28 @@ public class Personne {
     private String telephone;
     private String email;
 
+    /**
+     * Constructeur sans argument.
+     */
     public Personne() {
     }
 
+    /**
+     * Constructeur minimal avec identifiant, nom et prénom.
+     *
+     * @param id     identifiant technique
+     * @param nom    nom de famille
+     * @param prenom prénom
+     */
     public Personne(int id, String nom, String prenom) {
         this.id = id;
         setNom(nom);
         setPrenom(prenom);
     }
 
+    /**
+     * Constructeur complet avec coordonnées.
+     */
     public Personne(int id,
                     String nom,
                     String prenom,
@@ -139,6 +158,9 @@ public class Personne {
         }
     }
 
+    /**
+     * @return nom + prénom sur une seule chaîne.
+     */
     public String getNomComplet() {
         String n = nom == null ? "" : nom;
         String p = prenom == null ? "" : prenom;

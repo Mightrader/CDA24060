@@ -2,6 +2,12 @@ package sparadrap.model;
 
 import sparadrap.Mutuelle;
 
+/**
+ * Représente un client de la pharmacie.
+ * <p>
+ * Hérite des informations de base de {@link Personne} et ajoute
+ * des informations spécifiques comme la mutuelle.
+ */
 public class Client extends Personne {
 
     private String numeroSecuriteSociale;

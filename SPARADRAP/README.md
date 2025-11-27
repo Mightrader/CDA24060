@@ -1,24 +1,22 @@
 # SPARADRAP — TP Maven (AFPA / CDA)
 
-Application **Swing** de démonstration (achats, clients, médecins, médicaments, mutuelles) pilotée par **Maven**.
+Application Java **Swing** de gestion de pharmacie (clients, médecins, mutuelles, médicaments, achats) construite avec **Maven** et une base de données embarquée **H2**.
 
-## Prérequis
-- **Java 11** et **Maven 3.9.x**
-- Vérifier (PowerShell) :
-  ```powershell
-  mvn -v
-  
+L’objectif du projet est de mettre en pratique :
+- une organisation en couches (MVC simplifié),
+- le codage défensif,
+- les exceptions métier,
+- les tests unitaires.
+
 ---
 
-## Compiler
-mvn clean package
+## 1. Prérequis
 
-## Lancer l’application Swing
-mvn exec:java
+- **Java 11** (ou version supérieure compatible)
+- **Maven 3.9.x** installé et disponible dans le `PATH`
 
-## Générer le site Maven (rapports, Javadoc, XRef)
-mvn site
+Vérification rapide :
 
-## Ouvrir la page d’accueil du site
-Start-Process ".\target\site\index.html"
-
+```bash
+java -version
+mvn -v

@@ -1,5 +1,10 @@
 package sparadrap.model;
 
+/**
+ * Représente un médecin prescripteur.
+ * <p>
+ * Hérite de {@link Personne} et ajoute une spécialité médicale.
+ */
 public class Medecin extends Personne {
 
     private String specialite;

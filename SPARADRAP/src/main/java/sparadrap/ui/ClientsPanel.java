@@ -10,6 +10,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Panel Swing de gestion des clients.
+ * <p>
+ * Affiche la liste des clients et permet d'ajouter, renommer,
+ * supprimer et rafraîchir les données via {@link ClientsController}.
+ */
 public class ClientsPanel extends JPanel {
 
     private final Pharmacie service;
@@ -53,6 +59,9 @@ public class ClientsPanel extends JPanel {
         loadClients();
     }
 
+    /**
+     * Recharge les clients depuis le contrôleur et met à jour la table.
+     */
     private void loadClients() {
         currentClients = controller.listClients();
 

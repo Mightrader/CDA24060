@@ -7,6 +7,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DAO responsable de l'accès aux données pour l'entité Client.
+ * <p>
+ * Cette classe encapsule toutes les requêtes SQL vers la table <code>clients</code>.
+ */
 public class ClientDao {
 
     private static final String SELECT_ALL   = "SELECT id, nom FROM clients ORDER BY nom";
@@ -15,6 +20,9 @@ public class ClientDao {
     private static final String UPDATE       = "UPDATE clients SET nom = ? WHERE id = ?";
     private static final String DELETE       = "DELETE FROM clients WHERE id = ?";
 
+    /**
+     * Retourne la liste de tous les clients.
+     */
     public List<Clients> findAll() {
         List<Clients> result = new ArrayList<>();
         try (Connection c = Database.getConnection();
@@ -35,6 +43,9 @@ public class ClientDao {
         return result;
     }
 
+    /**
+     * Recherche un client par identifiant.
+     */
     public Clients findById(int id) {
         try (Connection c = Database.getConnection();
              PreparedStatement ps = c.prepareStatement(SELECT_BY_ID)) {
@@ -54,6 +65,9 @@ public class ClientDao {
         return null;
     }
 
+    /**
+     * Insère un nouveau client en base et met à jour son identifiant.
+     */
     public Clients insert(Clients client) {
         try (Connection c = Database.getConnection();
              PreparedStatement ps = c.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
@@ -75,6 +89,9 @@ public class ClientDao {
         }
     }
 
+    /**
+     * Met à jour les informations d'un client existant.
+     */
     public void update(Clients client) {
         try (Connection c = Database.getConnection();
              PreparedStatement ps = c.prepareStatement(UPDATE)) {
@@ -87,6 +104,9 @@ public class ClientDao {
         }
     }
 
+    /**
+     * Supprime un client par identifiant.
+     */
     public void delete(int id) {
         try (Connection c = Database.getConnection();
              PreparedStatement ps = c.prepareStatement(DELETE)) {
@@ -98,6 +118,9 @@ public class ClientDao {
         }
     }
 
+    /**
+     * Supprime un client existant.
+     */
     public void delete(Clients client) {
         if (client != null) {
             delete(client.getId());
