@@ -64,16 +64,16 @@ class ClientDaoTest {
     @Test
     void updateModifieBienLeNom() {
         Clients client = new Clients();
-        client.setNom("Client Avant Update");
+        client.setNom("Client test avant");
         dao.insert(client);
         int id = client.getId();
 
-        client.setNom("Client Après Update");
+        client.setNom("Client test");
         dao.update(client);
 
         Clients depuisLaBase = dao.findById(id);
         assertNotNull(depuisLaBase);
-        assertEquals("Client Après Update", depuisLaBase.getNom());
+        assertEquals("Client test", depuisLaBase.getNom());
     }
 
     @Test
